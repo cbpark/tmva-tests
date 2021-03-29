@@ -1,0 +1,6 @@
+/target
+.ccls*
+data
+*.gz
+*.dat
+*.root

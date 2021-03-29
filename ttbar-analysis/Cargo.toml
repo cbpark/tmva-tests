@@ -1,0 +1,11 @@
+[package]
+name = "ttbar-analysis"
+version = "0.0.0"
+authors = ["Chan Beom Park <cbpark@gmail.com>"]
+edition = "2018"
+license = "BSD-3-Clause"
+
+[dependencies]
+flate2 = { version = "1.0.20", features = ["zlib"], default-features = false }
+# hepurs = { git = "ssh://git@github.com/cbpark/hepurs.git" }
+hepurs = { path = "../../hepurs" }

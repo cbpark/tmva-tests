@@ -1,3 +1,5 @@
 .ccls*
 dataset
+*.dat
 *.root
+*.log

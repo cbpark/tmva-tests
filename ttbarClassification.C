@@ -43,7 +43,7 @@ void ttbarClassification() {
         "AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:"
         "SeparationType=GiniIndex:nCuts=20");
 
-    factory.BookMethod(dataloader.get(), TMVA::Types::kMLP, "MLP",
+    factory.BookMethod(dataloader.get(), TMVA::Types::kMLP, "NN",
                        "H:!V:NeuronType=tanh:VarTransform=N:NCycles=600:"
                        "HiddenLayers=N+1,N:TestRate=5:!UseRegulator");
 

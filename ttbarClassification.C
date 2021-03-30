@@ -28,8 +28,9 @@ void ttbarClassification() {
 
     dataloader->PrepareTrainingAndTestTree("", "SplitMode=random:!V");
 
-    auto outfile = std::make_unique<TFile>("ttbar_tmva.root", "recreate");
-    TMVA::Factory factory{APPNAME, outfile.get(),
+    const auto outfilename = "ttbar_tmva.root";
+    auto outfile = TFile::Open(outfilename, "recreate");
+    TMVA::Factory factory{APPNAME, outfile,
                           "!V:!Silent:Color:DrawProgressBar:Transformations="
                           "I;D;P;G,D:AnalysisType=Classification"};
 
@@ -59,6 +60,9 @@ void ttbarClassification() {
     // Evaluate and compare performance of all configured MVAs
     factory.EvaluateAllMethods();
 
+    outfile->Close();
     std::cout << "==> Wrote root file: " << outfile->GetName() << '\n';
     std::cout << "==> " << APPNAME << " is done!\n";
+
+    if (!gROOT->IsBatch()) { TMVA::TMVAGui(outfilename); }
 }

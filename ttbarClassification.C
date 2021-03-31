@@ -5,6 +5,7 @@
 #include "TMVA/DataLoader.h"
 #include "TMVA/Factory.h"
 #include "TMVA/Types.h"
+#include "TROOT.h"
 #include "TTree.h"
 
 const std::string APPNAME = "ttbarClassification";
@@ -15,6 +16,8 @@ void ttbarClassification() {
     TFile input{"ttbar-analysis/ttbar_analysis.root"};
     std::cout << "--- " << APPNAME
               << "  : Using input file: " << input.GetName() << '\n';
+
+    ROOT::EnableImplicitMT();
 
     auto dataloader = std::make_shared<TMVA::DataLoader>("dataset");
     dataloader->AddVariable("mt2", "M_{T2}", "", 'F');
